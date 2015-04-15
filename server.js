@@ -19,8 +19,8 @@ io.on('connection', function(socket) {
       'User ' + socket.id + ' has left the room.');
   });
 
-  socket.on('chat message', function(msg) {
-    io.emit('chat message', socket.id + ': ' + msg);
+  socket.on('chat message', function(name, msg) {
+    io.emit('chat message', name + ': ' + msg);
   });
 
 });

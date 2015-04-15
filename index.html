@@ -14,24 +14,43 @@
 
   <body>
 
-    <ul id="messages"></ul>
+    <form id="enterName" action="">
+      <input id="name" placeholder="Enter nickname"/>
+    </form>
 
-    <form action="">
-      <input id="m" autocomplete="off" placeholder="Type message here..."/>
+    <ul id="messages" class="messages"></ul>
+
+    <form id="enterMessage" class="messages" action="">
+      <input id="msg" class="messages" autocomplete="off" placeholder="Type message here..."/>
     </form>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script>
       var socket = io();
-      $('form').submit(function() {
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
+      var username;
+
+//      function() {
+//        $('.messages').hide();
+//      }
+
+      $('form#enterName').submit(function() {
+        username = $('#name').val();
+        $(this).remove();
+        $('.messages').show();
+      });
+
+      $('form#enterMessage').submit(function() {
+        msg = $('#msg').val();
+        socket.emit('chat message', username, msg);
+        $('#msg').val('');
         return false;
       });
-      socket.on('chat message', function(msg) {
-        $('#messages').append($('<li>').text(msg));
+
+      socket.on('chat message', function(name, msg) {
+        $('#messages').append($('<li>').text(name).text(msg));
       });
+
       socket.on('room message', function(msg) {
         $('#messages').append($('<li class="roomMsg">').text(msg));
       });
