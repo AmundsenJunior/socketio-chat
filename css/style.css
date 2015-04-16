@@ -7,22 +7,29 @@
 body {
   font: 13px Helvetica, Arial;
   position: relative;
+  height: 100%;
 }
 
 form#enterName {
   background: #000;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 50%;
 }
 
 form#enterName input {
   background: #000;
-  top: 30%;
-  bottom: 30%;
-  padding: 15px;
-  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fff;
   color: #fff;
   text-align: center;
+  width: 100%;
+  font-size: 200%;
 }
 
 form#enterMessage {

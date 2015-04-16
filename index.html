@@ -15,13 +15,13 @@
   <body>
 
     <form id="enterName" action="">
-      <input id="name" placeholder="Enter nickname"/>
+      <input id="name" placeholder="Enter nickname" autocomplete="off" autofocus/>
     </form>
 
     <ul id="messages" class="messages"></ul>
 
     <form id="enterMessage" class="messages" action="">
-      <input id="msg" class="messages" autocomplete="off" placeholder="Type message here..."/>
+      <input id="msg" class="messages" autocomplete="off" autofocus placeholder="Type message here..."/>
     </form>
 
     <script src="/socket.io/socket.io.js"></script>
