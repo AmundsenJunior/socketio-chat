@@ -30,14 +30,11 @@
       var socket = io();
       var username;
 
-//      function() {
-//        $('.messages').hide();
-//      }
-
       $('form#enterName').submit(function() {
         username = $('#name').val();
+        $('#name').val('');
         $(this).remove();
-        $('.messages').show();
+        $('.messages').toggle();
       });
 
       $('form#enterMessage').submit(function() {
