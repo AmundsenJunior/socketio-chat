@@ -10,6 +10,10 @@ app.get('/css/:stylesheet', function(req, res) {
   res.sendFile(__dirname + '/css/' + req.params.stylesheet);
 });
 
+app.get('/js/:script', function(req, res) {
+  res.sendFile(__dirname + '/js/' + req.params.script);
+});
+
 io.on('connection', function(socket) {
   socket.broadcast.emit('room message', 
     'User ' + socket.id + ' has joined the room.');
